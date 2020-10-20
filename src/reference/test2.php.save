@@ -1,0 +1,62 @@
+<?php
+include_once("db_connect.php");
+
+?>
+
+<!DOCTYPE html>
+
+<head>
+
+	<title>Attack on titans!</title>
+
+
+</head>
+
+<body>
+
+<h1>welcome</h1>
+
+
+<table>
+
+<?php
+
+$qStr = "SELECT * FROM t1;";
+$qRes = $db->query($qStr);
+printf("Meoww!!")
+if ($qRes != FALSE) {
+	printf("<caption>t1 has %d rows and %d columns</caption>\n", $qRes->rowCount(), $qRes->colCount());
+
+	while ($row = $qRes->fetch()) {
+		$id = $row['id'];
+		$name = $row['name'];
+
+		// <tr><td>$id</td>
+		print "<tr>";
+		print "<td>$id</td>";
+		
+		print "</tr>\n"
+	}
+
+
+}
+
+
+
+
+
+
+?>
+
+
+
+
+
+
+</table>
+
+</body>
+
+
+
+</html>
