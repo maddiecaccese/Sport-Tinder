@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Accept Functionality</title>
+    </head>
+
+    <body>
+        <form action="accept.php" method="POST">
+            <input type="text" name="accepterId" placeholder="id actioner"/>
+            <input type="text" name="recipientId" placeholder="id recipient" />
+            <br>
+            <input type="radio" id="practice" name="matchType" value="practice">
+            <label for="practice">Practice</label>
+            <br>
+            <input type="radio" id="match" name="matchType" value="match">
+            <label for="match">Match</label>
+            <br>
+            <button type="submit" name="accept">Accept</button>
+            <button type="submit" name="decline">Decline</button>
+        </form>
+    </body>
+</html>
