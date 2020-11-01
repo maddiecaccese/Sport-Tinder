@@ -90,6 +90,7 @@ function verifyEmail($db, $userlogin) {
 }
 
 /**
+ * @Author: Alex Nguyen
  * @Params:
  *      $db (PDO): The database 
  *      $accepterId (int):
@@ -111,6 +112,7 @@ function acceptPlayer($db, $accepterId, $recipientId, $type, $accepted) {
 
 
 /**
+ * @Author: Alex Nguyen
  * Get all players
  * @Params:
  *      $db (PDO): The database
