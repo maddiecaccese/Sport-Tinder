@@ -1,0 +1,23 @@
+#Profile {
+    background-image: linear-gradient(to right, red , yellow);
+    
+}
+
+#Teams {
+    margin: 0px;
+    padding: 7px
+}
+
+#Menu {
+    background-color: purple;
+}
+
+html, body, #Main {
+    margin: 0;
+    height: 100%;
+}
+
+.tile {
+    border: 3px solid black;
+    background-color: #acb2aa;
+}
