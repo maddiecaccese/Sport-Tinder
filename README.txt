@@ -1,6 +1,6 @@
 Alex:
 
-Angel:
+Angel: Created a dashboard that pulls available data from the database with all the associated files.
 
 Juan:
 
