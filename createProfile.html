@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<TITLE>Create Profile</TITLE>
+</HEAD>
+
+<BODY style="background-color:#f2b476;"></BODY>
+<!--4c1130-->
+<center>
+<H2>Create your profile</H2>
+Enter your information to create your account!
+
+<FORM name="fmCreateProfile" method="POST" action="addTeam.php">
+	<b>What is your name? First and last!<br><input type="text" name="name" placeholder="First name" required>
+	</br>
+	
+	<br>
+	Enter your birthyear: <br><input type="year" name="birthyear" placeholder="Format: yyyy" required>
+	</br>
+
+	<br>
+	Choose your sex: <br>
+	<select name="sex" placeholder="choose your sex" required>	
+		<option value =""></option>
+		<option value="male">Male</option>
+		<option value="female">Female</option>
+		<option value="other">Other</option>
+	</select>
+	</br>
+
+	<br>
+	What sport do you want to play?<br><input type="text" name="sports" placeholder="Preferred Sport" required>
+	</br>
+
+	<br>
+	Where are you located (State, City)?<br> <input type="text" name="address" placeholder="Address" required>
+    </br>
+	
+	<br>
+	Where do you want to play (City)?<br> <input type="text" name="preferred_location" placeholder="Preferred location" required>
+    <br>
+	<br>
+	When do you play?
+	<br>
+	<input type="time" id="time" name="preferred_time"
+       min="00:00" max="24:00" required>
+	</br>
+	<br><br>
+	<div>
+        <input
+          type="submit"
+          style="background-color: #4c1130; color: white"
+          value="Create Account"
+        />
+	</div>
+</form>
+</center>
+   
