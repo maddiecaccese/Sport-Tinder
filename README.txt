@@ -2,6 +2,6 @@ Alex: Created the landing page (index_.php). Created the accept/ decline functio
 
 Angel: Created a dashboard that pulls available data from the database with all the associated files.
 
-Juan:
+Juan: Created a user creation page, createProfile.html and createProfile.php and pushes the results of entered text into the database as a row of the table player.
 
 Maddie: Finished the creating a team functionality with four players for the time being. Completed the addTeam.html and addTeam.php files, which includes the addTeam function in the php file.
