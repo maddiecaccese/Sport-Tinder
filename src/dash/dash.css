@@ -1,6 +1,7 @@
 #Profile {
-    background-image: linear-gradient(to right, red , yellow);
-    
+    background-image: linear-gradient(to right, #eeae51, #fad9a9);
+    border-style: ridge;
+    border-radius: 25px;
 }
 
 #Teams {
@@ -9,10 +10,14 @@
 }
 
 #Menu {
-    background-color: purple;
+    border-radius: 25px;
+    background-color: #5f0a62;
+    border-style: ridge;
+    color: white;
 }
 
 html, body, #Main {
+    background-color: #ebebeb;
     margin: 0;
     height: 100%;
 }

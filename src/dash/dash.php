@@ -12,7 +12,7 @@ include_once("athletes.php");
 
 <div id='Main' class='row'>
 
-        <div id='Menu' class='col-2'>
+        <div id='Menu' class='col-2 '>
         
             <div class='button'>
             Teams
@@ -20,6 +20,7 @@ include_once("athletes.php");
             
             <div class='button'>
             Messages/Requests
+            <?php getMessages($db, 1, 1)?>
             </div>
 
             <div>
@@ -31,7 +32,7 @@ include_once("athletes.php");
 
         <div id='Teams' class='col-2'>
             <div class='container'>
-            <?php getAthletes($db, 1); ?>
+            <?php getAthletes($db, 2, 1); ?>
             </div>
 
         </div>
