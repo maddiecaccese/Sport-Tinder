@@ -4,8 +4,9 @@
  * accept.php
  * This class implement a form (accept/ decline button) that interact with the accept/ decline relation in the database.
  */
+session_start();
 include_once("db_connect.php");
-include('./util.php');
+include('./utils.php');
 
 print_r($_POST);
 
@@ -15,9 +16,10 @@ print_r($_POST);
 //     print("Decline button clicked");
 // }
 
-$accepterId = $_POST['accepterId'];
-$recipientId = $_POST['recipientId'];
-$matchType = $_POST['matchType'];
+// $accepterId = $_POST['accepterId'];
+$accepterId = $_SESSION['userId'];
+$recipientId = $_POST['pid'];
+// $matchType = $_POST['matchType'];
 $accepted = isset($_POST['accept']);
 
 acceptPlayer($db, $accepterId, $recipientId, $matchType, $accepted);
