@@ -1,3 +1,4 @@
 src/reference/**
 src/reference/
 **/db_connect.php
+.vscode
