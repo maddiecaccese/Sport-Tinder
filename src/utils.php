@@ -1,5 +1,12 @@
 <?php
+/**
+ * @author Alex Nguyen.
+ */
 
+
+/**
+ * 
+ */
 function checkUser ($db, $login, $pass) {
     $hash = md5($pass);
     
@@ -71,6 +78,10 @@ function registerUser ($db, $input) {
     return true;
 }
 
+/**
+ * Veryfy user email
+ * 
+ */
 function verifyEmail($db, $userlogin) {
     $str = "SELECT ulogin
             FROM unverified
@@ -90,21 +101,25 @@ function verifyEmail($db, $userlogin) {
 }
 
 /**
- * @Author: Alex Nguyen
- * @Params:
- *      $db (PDO): The database 
- *      $accepterId (int):
- *      $recipientId (int):
- *      $type (String):
- *      $accepted (boolean): whether they accept or not
- * @Returns:
- *      (boolean): Whether the query has been executed successfully
+ * Accept player, add to the match database and remove the query from the request
+ * database
+ * 
+ * @param $db (PDO): The database 
+ * @param $accepterId (int):
+ * @param $recipientId (int):
+ * @param $type (String):
+ * @param $accepted (boolean): whether they accept or not
+ * @return (boolean): Whether the query has been executed successfully
  */
 function acceptPlayer($db, $accepterId, $recipientId, $type, $accepted) {
     $str = "INSERT INTO matches 
             VALUES ($accepterId, $recipientId, $type, CURRENT_TIMESTAMP(), $accepted);";
     $res = $db->query($str);
-    if (!$res) {
+
+    $str2 = "DELETE FROM request WHERE senderId=$recipientId AND receiverId=$accepterId;";
+    $res2 = $db->query($str2);
+
+    if (!$res || !$res2) {
         return false;
     }
     return true;
@@ -112,21 +127,67 @@ function acceptPlayer($db, $accepterId, $recipientId, $type, $accepted) {
 
 
 /**
- * @Author: Alex Nguyen
- * Get all players
- * @Params:
- *      $db (PDO): The database
- * @Returns:
- *      (PDO): A table
+ * This method get the information of every player other than oneself. Plus one column
+ * called 'requesting', saying 'YES' if the current user have not requested the querying 
+ * player, 'NO' otherwise.
+ * 
+ * @param $db (PDO): The database
+ * @return (PDO): A table
  */
-function getAllPlayer($db) {
-    $str = "SELECT * 
-            FROM player;";
+function getAllPlayer($db, $userid) {
+    $str = "SELECT * , (
+                CASE WHEN 
+                    NOT EXISTS(
+                        SELECT * 
+                        FROM request
+                        WHERE request.receiverId = $userid AND player.pid = request.senderId
+                    ) THEN 'YES'
+                    ELSE 'NO' 
+                END
+            ) AS requesting
+            FROM player
+            WHERE pid!=$userid;";
     $res = $db->query($str);
+    if(!$res){
+        print("No resources!");
+        return;
+    }
     return $res;
 }
 
+/**
+ * Request a match.
+ * 
+ * @param $db (PDO): The database
+ * @return (PDO): A table
+ */
+function requestPlayer($db, $senderId, $receiverId, $matchType) {
+    $str = "INSERT INTO request VALUES ($senderId, $receiverId, '$matchType', CURRENT_TIMESTAMP())";
+    $res = $db->query($str);
+    if(!$res){
+        return false;
+    }
+    return true;
+}
 
+/**
+ * Add the message to the database.
+ * 
+ * @param $db The database from db connect.
+ * @param $sender The id of the sender.
+ * @param $receiver The id of the receiver.
+ * @param $message The message that was sent.
+ */
+function putMessage($db, $sender, $receiver, $message) {
+    $str = "INSERT INTO messages VALUES ($sender, $receiver, CURRENT_TIMESTAMP(), $message);";
+    $res = $db->query($str);
+
+    if ($res) {
+        return true;
+    }
+    print("Error adding messages to the database!");
+    return false;
+}
 
 
 ?>
