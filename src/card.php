@@ -1,7 +1,7 @@
 <?php 
     session_start();
     // echo 'Welcome!';
-    $_SESSION['userId'] = 2;
+    $_SESSION['userId'] = 4;
     require_once('db_connect.php');
     require('utils.php');
 ?>
@@ -22,7 +22,7 @@
         <div class = "container">
             <?php 
 
-            function print_card($pid, $name, $gender, $sports, $isRequesting) {
+            function print_card($pid, $name, $gender, $sports, $requested, $pending, $matchTypeFromRequest) {
                 print("<div class = 'row'>
                             <div class = 'col-sm'>
                                 <div class='card-body'>
@@ -32,37 +32,45 @@
                                 </div>
                             </div>
                             <div class = 'col-sm' style='display: flex; justify-content: center; align-items: center;'>");
-                                if ($isRequesting) {
+                                if ($pending) {
+                                    print("<form action='accept.php' name='$pid' method='POST'>
+                                                <input type='hidden' name='pid' value='$pid' />
+                                                <input type='hidden' name='matchType' value='$matchTypeFromRequest' />
+                                                <button type='submit' name='accept'>Accept</button>
+                                                <button type='submit' name='decline'>Decline</button>
+                                            </form>");
+                                } else if (!$requested) {
                                     print("<form action='request.php' name='$pid' method='POST'>
                                                 <input type='hidden' name='pid' value='$pid' />
-                                                <input type='radio' id='practice' name='matchType' value='practice'>
+                                                <input type='radio' id='practice' name='matchType' value='practice' checked>
                                                 <label for='practice'>Practice</label>
                                                 <input type='radio' id='match' name='matchType' value='match'>
                                                 <label for='match'>Match</label>
                                                 <br>
                                                 <button type='submit' name='request'>Send Request</button>
                                             </form>");
-                                } else {
-                                    print("<form action='accept.php' name='$pid' method='POST'>
-                                                <input type='hidden' name='pid' value='$pid' />
-                                                <button type='submit' name='accept'>Accept</button>
-                                                <button type='submit' name='decline'>Decline</button>
-                                            </form>");
+                                } else if ($requested) {
+                                    print("Request sent!");
                                 }
                 print("</div>
                     </div>");
             }
             
             $res = getAllPlayer($db, $_SESSION['userId']);
-
+            
             if (!$res) {
                 print("No resource!\n");
             }
             
             if ($res->rowCount() > 0) {
                 while ($row = $res->fetch()) {
-                    $isRequesting = $row['requesting'] == 'YES';
-                    print_card($row['pid'], $row['name'], $row['sex'], $row['sports'], $isRequesting);
+                    $requested = $row['requested'] == 'YES';
+                    $pending = $row['pending'] == 'YES';
+                    $matchTypeFromRequest = 'NO';
+                    if ($pending) {
+                        $matchTypeFromRequest = getMatchType($db, $row['pid'], $_SESSION['userId']);
+                    }
+                    print_card($row['pid'], $row['name'], $row['sex'], $row['sports'], $requested, $pending, $matchTypeFromRequest);
                 }
             }
             ?>

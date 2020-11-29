@@ -14,6 +14,11 @@ $senderId = $_SESSION['userId'];
 $receiverId = $_POST['pid'];
 $matchType = $_POST['matchType'];
 
-requestPlayer($db, $senderId, $receiverId, $matchType);
+$res = requestPlayer($db, $senderId, $receiverId, $matchType);
+if ($res){
+    print("Query Successfully!");
+} else {
+    print("500: internal server error!");
+}
 
 ?>

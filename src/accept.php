@@ -10,18 +10,15 @@ include('./utils.php');
 
 print_r($_POST);
 
-// if (isset($_POST['accept'])) {
-//     print("Accept butotn clicked!");
-// } else {
-//     print("Decline button clicked");
-// }
-
-// $accepterId = $_POST['accepterId'];
 $accepterId = $_SESSION['userId'];
 $recipientId = $_POST['pid'];
-// $matchType = $_POST['matchType'];
+$matchType = $_POST['matchType'];
 $accepted = isset($_POST['accept']);
 
-acceptPlayer($db, $accepterId, $recipientId, $matchType, $accepted);
-
+$res = acceptPlayer($db, $accepterId, $recipientId, $matchType, $accepted);
+if ($res){
+    print("Query Successfully!");
+} else {
+    print("500: internal server error!");
+}
 ?>
