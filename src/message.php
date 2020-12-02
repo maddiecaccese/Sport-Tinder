@@ -1,3 +1,20 @@
+<?php 
+
+/**
+ * @filename message.php this file contain implementation for the message functionality. 
+ * 
+ * @author Alex Nguyen
+ * 
+ */
+session_start();
+require_once('db_connect.php');
+require('utils.php');
+$_SESSION['chatReceiverId'] = 5;
+$_SESSION['userId'] = 2;
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -40,7 +57,7 @@
 }
 
 /* Style the right image */
-.container img.right {
+.container .right {
   float: right;
   margin-left: 20px;
   margin-right:0;
@@ -106,7 +123,47 @@
 
       <div class="main">
 
-        <div class="container">
+        <?php 
+        
+        function printMessage($senderId, $receiverId, $time, $message) {
+            if ($senderId == $_SESSION['userId'] && $receiverId == $_SESSION['chatReceiverId']) {
+                print("<div class='container darker'>
+                            <img src='./assets/img/ava.jpg' alt='Avatar' class='right' style='float: right;margin-left: 20px;margin-right:0;'>
+                            <p>$message</p>
+                            <span class='time-left'>$time</span>
+                        </div>");
+            } else if ($receiverId == $_SESSION['userId'] && $senderId == $_SESSION['chatReceiverId']) {
+                print("<div class='container'>
+                            <img src='./assets/img/ava2.jpg' alt='Avatar'>
+                            <p>$message</p>
+                            <span class='time-right'>$time</span>
+                        </div>");
+            }
+        }
+        
+        // Checking for a POST request 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+            $senderId = $_SESSION['userId']; 
+            $receiverId = $_SESSION['chatReceiverId']; 
+            $message = $_POST['message'];
+            if ($message !== '') {
+                $res = putMessage($db, $senderId, $receiverId, $message);
+            }
+            // print("message.php");
+        } 
+
+        $res = getMessages($db, $_SESSION['userId'], $_SESSION['chatReceiverId']);
+        
+        if($res) {
+            while($row = $res->fetch()) {
+                $time = $row['time'];
+                $message = $row['message'];
+                printMessage($row['pid1'], $row['pid2'], $time, $message);
+            }
+        }
+        
+        ?>
+        <!-- <div class="container">
             <img src="/w3images/bandmember.jpg" alt="Avatar">
             <p>Hello. How are you today?</p>
             <span class="time-right">11:00</span>
@@ -128,15 +185,15 @@
             <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
             <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
             <span class="time-left">11:05</span>
-          </div>
-
-          <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                        <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">
-                                Send</button>
-                        </span>
-
-        </div>
+          </div> -->
+        
+        <form action="message.php" method='POST'>
+            <input id="btn-input" type="text" name='message' class="form-control input-sm" placeholder="Type your message here..." />
+            <span class="input-group-btn">
+                <button class="btn btn-warning btn-sm" id="btn-chat" type='submit' name="submit">Send</button>
+            </span>
+        </form>
+    </div>
     
 
 
