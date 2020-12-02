@@ -228,7 +228,7 @@ function requestPlayer($db, $senderId, $receiverId, $matchType) {
  * @param $message The message that was sent.
  */
 function putMessage($db, $sender, $receiver, $message) {
-    $str = "INSERT INTO messages VALUES ($sender, $receiver, CURRENT_TIMESTAMP(), $message);";
+    $str = "INSERT INTO messages VALUES ($sender, $receiver, CURRENT_TIMESTAMP(), '$message');";
     $res = $db->query($str);
 
     if ($res) {
@@ -238,5 +238,22 @@ function putMessage($db, $sender, $receiver, $message) {
     return false;
 }
 
+/**
+ * 
+ */
+function getMessages($db, $senderId, $receiverId) {
+    $str = "SELECT * FROM messages M1
+            WHERE pid1 = $senderId AND pid2 = $receiverId
+            UNION ALL
+            SELECT * FROM messages M2
+            WHERE pid1 = $receiverId AND pid2 = $senderId
+            ORDER BY time;";
+    // print("String: ".$str);
+    $res = $db->query($str);
+    if ($res) {
+        return $res;
+    }
+    return NULL;
+}
 
 ?>
