@@ -1,6 +1,5 @@
 <?php 
     session_start();
-    // echo 'Welcome!';
     $_SESSION['userId'] = 4;
     require_once('db_connect.php');
     require('utils.php');
