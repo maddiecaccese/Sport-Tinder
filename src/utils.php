@@ -27,7 +27,7 @@ function checkUser ($db, $login, $pass) {
         return -3;
     } else {
         print_r($userRow);
-        return $userRow["id"];
+        return $userRow['id'];
     }
 }
 
