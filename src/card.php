@@ -1,5 +1,14 @@
 <?php 
+    /**
+     * @author Alex Nguyen.
+     * card.php
+     * 
+     * This file contains implementation of requesting, declining, and accepting 
+     * functionality.
+     * 
+     */
     session_start();
+    // hard coded login
     $_SESSION['userId'] = 4;
     require_once('db_connect.php');
     require('utils.php');

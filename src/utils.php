@@ -5,6 +5,7 @@
 
 
 /**
+ * @author Alex Nguyen.
  * 
  */
 function checkUser ($db, $login, $pass) {
@@ -29,8 +30,9 @@ function checkUser ($db, $login, $pass) {
     }
 }
 
-// In hw4utils.php, write a function, addUser, which takes five parameters, $db, $login, $pass, $bdate, 
-// and $email and adds a new user to user table and user's login to unverified table.
+/**
+ * @author Alex Nguyen.
+ */
 function addUser ($db, $login, $pass, $bdate, $email) {
     $hash = md5($pass);
     
@@ -52,7 +54,9 @@ function addUser ($db, $login, $pass, $bdate, $email) {
     // printf("<h1>Executed query 2</h1>");
 }
 
-
+/**
+ * @author Alex Nguyen.
+ */
 function registerUser ($db, $input) {
 
     $login = $input['login'];
@@ -79,8 +83,8 @@ function registerUser ($db, $input) {
 }
 
 /**
- * Veryfy user email
- * 
+ * Verify user email
+ * @author Alex Nguyen.
  */
 function verifyEmail($db, $userlogin) {
     $str = "SELECT ulogin
@@ -103,6 +107,7 @@ function verifyEmail($db, $userlogin) {
 /**
  * Accept player, add to the match database and remove the query from the request
  * database
+ * @author Alex Nguyen.
  * 
  * @param $db (PDO): The database 
  * @param $accepterId (int):
@@ -145,6 +150,7 @@ function acceptPlayer($db, $accepterId, $recipientId, $type, $accepted) {
  * player, 'NO' otherwise. Plus one column called 'pending' saying 'YES' if there is a
  * request sent to this user, and this user have to either accept or decline the match, 
  * saying 'NO' otherwise.
+ * @author Alex Nguyen.
  * 
  * @param $db (PDO): The database
  * @return (PDO): A table
@@ -182,6 +188,7 @@ function getAllPlayer($db, $userid) {
 
 /**
  * Get the match type from the request table with the associated ids.
+ * @author Alex Nguyen.
  * 
  * @param $db: PDO
  * @param $requesterId: The id of the requester.
@@ -206,6 +213,7 @@ function getMatchType($db, $requesterId, $receiverId) {
 
 /**
  * Request a match.
+ * @author Alex Nguyen.
  * 
  * @param $db (PDO): The database
  * @return (PDO): A table
@@ -221,6 +229,7 @@ function requestPlayer($db, $senderId, $receiverId, $matchType) {
 
 /**
  * Add the message to the database.
+ * @author Alex Nguyen.
  * 
  * @param $db The database from db connect.
  * @param $sender The id of the sender.
@@ -239,7 +248,7 @@ function putMessage($db, $sender, $receiver, $message) {
 }
 
 /**
- * 
+ * @author Alex Nguyen.
  */
 function getMessages($db, $senderId, $receiverId) {
     $str = "SELECT * FROM messages M1
