@@ -1,8 +1,12 @@
+<!-- Author: Juan Eckert -->
+
 <!DOCTYPE html>
 <HTML>
 <HEAD>
 	<TITLE>Create Profile</TITLE>
 </HEAD>
+
+
 
 <BODY style="background-color:#f2b476;"></BODY>
 <!--4c1130-->
@@ -41,9 +45,15 @@ Enter your information to create your account!
     <br>
 	<br>
 	When do you play?
-	<br>
-	<input type="time" id="time" name="preferred_time"
-       min="00:00" max="24:00" required>
+ <br>
+		<select name="preferred_time" placeholder="select a time" required>	
+		<option value =""></option>
+		<option value="morning">Morning</option>
+		<option value="noon">Noon</option>
+		<option value="afternoon">Afternoon</option>
+   <option value="evening">Evening</option>
+   <option value="night">Night</option>
+	</select>
 	</br>
 	<br><br>
 	<div>
