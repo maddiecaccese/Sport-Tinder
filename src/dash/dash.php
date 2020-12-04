@@ -1,7 +1,7 @@
 <?php
 //By Angel Vergara 
 //A profile dashboard
-
+session_start();
 include_once("db_connect.php");
 include_once("bootstrap.php");
 include_once("profile.php");
