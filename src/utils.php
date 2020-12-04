@@ -6,12 +6,12 @@
 
 /**
  * @author Alex Nguyen.
- * 
+ * Return the user id of the login user.
  */
 function checkUser ($db, $login, $pass) {
     $hash = md5($pass);
     
-    $str = "SELECT login, passHash, ulogin
+    $str = "SELECT id, login, pass, ulogin
             FROM user
             LEFT JOIN unverified
             ON login = ulogin
@@ -23,59 +23,86 @@ function checkUser ($db, $login, $pass) {
         return -1;
     } else if ($userRow['ulogin'] == $userRow['login']) {
         return -2;
-    } else if ($userRow['passHash'] != $hash) {
+    } else if ($userRow['pass'] != $hash) {
         return -3;
     } else {
-        return 1;
+        $row = $res->fetch();
+        return $row["id"];
     }
 }
 
 /**
  * @author Alex Nguyen.
  */
-function addUser ($db, $login, $pass, $bdate, $email) {
+function addUser ($db, $login, $pass, $email, $name, $birthyear, $sex, $address, $sport) {
     $hash = md5($pass);
     
     $str1 = "INSERT INTO user 
+            (login, pass, sport, email)
             VALUES (
                 '$login',
                 '$hash',
-                '$bdate',
+                '$sport',
                 '$email'
             );";
     $str2 = "INSERT INTO unverified 
             VALUES (
                 '$login'
             );";
-
     $db->query($str1);
     // printf("<h1>Executed query 1</h1>");
     $db->query($str2);
     // printf("<h1>Executed query 2</h1>");
+
+    // Get id of the registered user
+    $str3 = "SELECT id FROM user WHERE login='$login'";
+    $res3 = $db->query($str3);
+    if (!$res3) {
+        print("error!");
+        return -1;
+    }
+    $row = $res3->fetch();
+    $id = $row['id'];
+    // Push to the player table the information.
+    $str4 = "INSERT INTO player (pid, name, birthyear, sex, sports, address)
+            VALUES ($id, '$name', $birthyear, '$sex', '$sport', '$address');";
+    $res4 = $db->query($str4);
+    if (!$res4) {
+        print("Cannot add to player table!");
+        return -1;
+    }
+    print("Add successfully!");
+    return true;
 }
 
 /**
  * @author Alex Nguyen.
  */
 function registerUser ($db, $input) {
-
-    $login = $input['login'];
-    $pass = $input['pass'];
-    $bdate = $input['bdate'];
+    print("Get here 1");
+    $uname = $input['uname'];
+    $psw = $input['psw'];
     $email = $input['email'];
+    $name = $input['name'];
+    $birthyear = $input['birthyear'];
+    $sex = $input['sex'];
+    $address = $input['address'];
+    $sport = $input['sport'];
 
     $str = "SELECT login
             FROM user
-            WHERE login = '$login';";
-    // printf($str);
+            WHERE login = '$uname';";
     $res = $db->query($str);
     if ($res->rowCount() > 0) {
+        print("username exist");
         return false;
     }
-    addUser($db, $login, $pass, $bdate, $email);
+    // print("Get here 2");
+    addUser($db, $uname, $psw, $email, $name, $birthyear, $sex, $address, $sport);
+    // print("Get here 3");
 
     // Send VERIFICATION emails
-    $msg = "<a href='http://www.cs.gettysburg.edu/~nguyvi01/cs360/hw4/verify.php?login=$login'>Click here to verify your email.</a>";
+    $msg = "<a href='http://www.cs.gettysburg.edu/~nguyvi01/cs360/project/src/verify.php?uname=$uname'>Click here to verify your email.</a>";
     $msg = wordwrap($msg,70);
     mail($email, "Account Verification", $msg);
 
@@ -100,7 +127,10 @@ function verifyEmail($db, $userlogin) {
             FROM unverified
             WHERE ulogin = '$userlogin';";
 
-    $db->query($str);
+    $res = $db->query($str);
+    if (!$res) {
+        return false;
+    }
     return true;
 }
 
