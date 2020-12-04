@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <center>
+    <head>
+      <title class="title">Sports Tinder Login</title>
+      <meta charset="UTF-8" />
+
+      <style>
+        .imgcontainer {
+          size: 10%;
+        }
+      </style>
+
+      <div class="imgcontainer">
+        <img src="ball.jpg" alt="Sports Tinder Logo" class="avatar" />
+        <h1>Sports Tinder</h1>
+        <br />
+      </div>
+    </head>
+
+    <style>
+      .title {
+        color: red;
+      }
+      .textfield {
+        padding: 0px 20px 20px 20px;
+      }
+      .container {
+        width: 10%;
+        padding: 5px;
+      }
+    </style>
+    <body style="background-color: #f2b476">
+      <form action="login_f.php" method="POST">
+        <center>
+          <div class="textfield">
+            <label for="uname"></label>
+            <input type="text" placeholder="Enter Username" name="uname" />
+          </div>
+          <div class="textfield">
+            <label for="psw"></label>
+            <input type="password" placeholder="Enter Password" name="psw" />
+          </div>
+        </center>
+        <center>
+          <button style="width: 10%" type="submit" id="LoginBtn">Log In</button>
+        </center>
+
+        <div class="container"></div>
+
+        <center>
+          <button style="width: 10%" id="SignUpBtn" href="signup.html">
+            Sign Up
+          </button>
+        </center>
+
+        <div class="container"></div>
+        <div class="container"></div>
+
+        <div class="container" style="background-color: #f8cd3f">
+          <div class="container"></div>
+          <div class="container"></div>
+          <center>
+            <a href="#">Forgot my password</a>
+          </center>
+          <div class="container"></div>
+        </div>
+      </form>
+    </body>
+  </center>
+</html>
