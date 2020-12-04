@@ -10,7 +10,7 @@ session_start();
 require_once('db_connect.php');
 require('utils.php');
 $_SESSION['chatReceiverId'] = 5;
-$_SESSION['userId'] = 2;
+// $_SESSION['userId'] = 2;
 ?>
 
 

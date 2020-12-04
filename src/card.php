@@ -9,7 +9,8 @@
      */
     session_start();
     // hard coded login
-    $_SESSION['userId'] = 4;
+    // $_SESSION['userId'] = 4;
+    ini_set('display_errors', 'On');
     require_once('db_connect.php');
     require('utils.php');
 ?>
