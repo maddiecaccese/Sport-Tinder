@@ -24,7 +24,7 @@
 
 	<br>
 	Any sex?: <br>
-	<select name="sex" placeholder="choose your sex" required>	
+	<select name="sex" placeholder="choose your sex">	
 		<option value =""></option>
 		<option value="M">Male</option>
 		<option value="F">Female</option>
