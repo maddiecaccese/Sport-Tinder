@@ -1,0 +1,98 @@
+<!-- @author Alex Nguyen -->
+
+<!DOCTYPE html>
+<html>
+  <center>
+    <head>
+      <title class="title">Sports Tinder Signup</title>
+      <meta charset="UTF-8" />
+
+      <style>
+        .imgcontainer {
+          size: 10%;
+        }
+      </style>
+
+      <div class="imgcontainer">
+        <img src="ball.jpg" alt="Sports Tinder Logo" class="avatar" />
+        <h1>Sports Tinder</h1>
+        <br />
+      </div>
+    </head>
+
+    <style>
+      .title {
+        color: red;
+      }
+      .textfield {
+        padding: 0px 20px 20px 20px;
+      }
+      .container {
+        width: 10%;
+        padding: 5px;
+      }
+    </style>
+    <body style="background-color: #f2b476">
+      <form action="signup.php" method="POST">
+        <center>
+          <div class="textfield">
+            <label for="uname"></label>
+            <input type="text" placeholder="Enter Username" name="uname" />
+          </div>
+          <div class="textfield">
+            <label for="psw"></label>
+            <input type="password" placeholder="Enter Password" name="psw" />
+          </div>
+          <div class="textfield">
+            <label for="email"></label>
+            <input type="text" placeholder="Enter email" name="email" />
+          </div>
+          <div class="textfield">
+            <label for="name"></label>
+            <input type="text" placeholder="Enter your name" name="name" />
+          </div>
+          <div class="textfield">
+            <label for="birthyear"></label>
+            <input type="text" placeholder="Enter birth year" name="birthyear" />
+          </div>
+          <div class="textfield">
+            <label for="sex"></label>
+            <input type="text" placeholder="Enter gender" name="sex" />
+          </div>
+          <div class="textfield">
+            <label for="address"></label>
+            <input type="text" placeholder="Enter your address" name="address" />
+          </div>
+          <div class="textfield">
+            <label for="sport"></label>
+            <input type="text" placeholder="What sport do you play?" name="sport" />
+          </div>
+        </center>
+        
+
+        <div class="container"></div>
+
+        <center>
+          <button style="width: 10%" id="SignUpBtn" href="signup.html">
+            Sign Up
+          </button>
+        </center>
+
+        <div class="container"></div>
+        <div class="container"></div>
+
+        <div class="container" style="background-color: #f8cd3f">
+          <div class="container"></div>
+          <div class="container"></div>
+          <center>
+            <a href="#">Forgot my password</a>
+          </center>
+          <div class="container"></div>
+        </div>
+      </form>
+      <center>
+        <button style="width: 10%; margin-top: 2em;" onclick="location.href='./login.html'" id="LoginBtn">Log In</button>
+      </center>
+    </body>
+  </center>
+</html>
