@@ -1,5 +1,8 @@
 <?php 
 
+
+ //Angel Vergara
+ //gets a player/team profile
  function getProfile($db, $pid, $type){
  
     //check if getting team or player profile
@@ -51,6 +54,8 @@
     }
     }
     
+    //Angel Vergara
+    //gets a player/teams messages
     function getMessages($db, $pid, $type){
  
     //check if getting team or player profile
