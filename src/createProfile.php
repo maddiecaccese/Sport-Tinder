@@ -1,6 +1,12 @@
+<!-- Author:  Juan Eckert -->
 <!DOCTYPE html>
 
 <?php
+/**
+ * @author Juan Eckert
+ */
+session_start();
+$_SESSION
 include_once("db_connect.php");
 print_r($_POST);
 ?>
