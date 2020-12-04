@@ -4,9 +4,10 @@
 /**
  * @author Alex Nguyen and Juan Eckert
  */
+
+ini_set('display_errors', 'On');
 include_once("db_connect.php");
 include_once("utils.php");
-session_start();
 print_r($_POST);
 ?>
 
@@ -28,9 +29,13 @@ print_r($_POST);
     // print("Get here2");
     if($res >= 0) {
         printf("<h3>Login successfully</h3>");
-        // session_start();
+        session_start();
         $_SESSION['userId'] = $res;
+        print("This is userid: ".$res);
+        print_r($_SESSION);
         header("Location: ./dash/dash.php");
+        // header("Location: ./card.php?userId=$res");
+        // header("Location: ./card.php");
     } else if ($res == -1) {
         printf("<h3>No user login found!</h3>");
     } else if ($res == -2) {
