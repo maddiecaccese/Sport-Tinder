@@ -1,6 +1,6 @@
 Link to Github: https://github.com/rxng8/Sport-Tinder
 
-Alex: Created the landing page (index_.php). Created the accept/ decline functionality with custom typed id (user have to type id in, no use of session id) (accept.html, accept.php, utils.php). Created initial viewable interface of accept/decline card (card.html)
+Alex: Created the landing page (index_.php). Created the accept/ decline/ request functionality (card.php, accept.php, request.php, utils.php). Created messaging functionality (message.php, utils.php)
 
 Angel: Created a dashboard that pulls available data from the database with all the associated files.
 
