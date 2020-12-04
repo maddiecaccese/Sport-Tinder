@@ -1,3 +1,9 @@
+<?php 
+/**
+ * @author Alex Nguyen
+ */
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -36,7 +42,10 @@
                 </div>
             </div>
             <div class="col-lg-8 mx-auto">
-                <p class="text-faded mb-5">We help sport players and teams match up together for practice session and tournaments.</p><a class="btn btn-primary btn-xl js-scroll-trigger" role="button" href="#services">Sign up</a></div>
+                <p class="text-faded mb-5">We help sport players and teams match up together for practice session and tournaments.</p>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" role="button" href="./login.html">Login</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" role="button" href="./signup.html">Sign up</a>
+            </div>
         </div>
     </header>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
