@@ -2,7 +2,8 @@
 <?php
 	session_start();
 	include_once("db_connect.php");
-	$_SESSION['userId'] = 2;
+	//test code used before session variable was implemented in login
+	//$_SESSION['userId'] = 2;
 	$userId = $_SESSION['userId'];
 ?>
 <!DOCTYPE html>
