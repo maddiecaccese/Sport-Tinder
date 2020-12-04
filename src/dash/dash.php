@@ -7,7 +7,7 @@ include_once("bootstrap.php");
 include_once("profile.php");
 include_once("athletes.php");
 include_once("filter.php");
-
+//print($_SESSION['userId'] . "\n");
 //Angel Vergara
 //Checks the if the user is a team captain and if they shuld see the captains dashboard
 
@@ -18,7 +18,8 @@ function getTeam($db, $id) {
     
     $row = $r1->fetch();
     
-    //print("$q1\n");
+    //print($_SESSION['userId'] . "\n");
+    //("$q1\n");
     //print(gettype($_GET['team']) . "\n");
     //print(count($row) . "\n");
     
@@ -46,6 +47,10 @@ function getTeam($db, $id) {
             Teams
             </div>
             
+            <div id='edit' class='button' >
+            Edit Profile
+            </div>
+            
             <div id="msg" class='button'>
             Messages/Requests
             <?php getMessages($db, $_SESSION['userId'], getTeam($db, $_SESSION['userId']))?>
@@ -65,6 +70,14 @@ function getTeam($db, $id) {
             
             <div id='Search' class='button' >
             Search
+            </div>
+            
+            <div id='TeamList' class='button' >
+            Join a Team
+            </div>
+            
+            <div id='Card' class='button' >
+            Request a Practice
             </div>
 
         </div>
@@ -87,12 +100,30 @@ function getTeam($db, $id) {
 
 <script>
 document.getElementById("CreateTeam").onclick = function () {
-        location.href = "../addTeam.html";
+        location.href = "../addTeamPage.php";
     };
     
 document.getElementById("Search").onclick = function () {
         location.href = "search.php";
     };
+    
+document.getElementById("TeamList").onclick = function () {
+        location.href = "../teamList.php";
+    };
+    
+    document.getElementById("Card").onclick = function () {
+        location.href = "../card.php";
+    };
+    
+    document.getElementById("msg").onclick = function () {
+        location.href = "../message.php";
+    };
+    
+    document.getElementById("edit").onclick = function () {
+        location.href = "../editProfile.html";
+    };
+    
+   //add editProfile 
     
 </script>
 
