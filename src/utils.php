@@ -26,8 +26,8 @@ function checkUser ($db, $login, $pass) {
     } else if ($userRow['pass'] != $hash) {
         return -3;
     } else {
-        $row = $res->fetch();
-        return $row["id"];
+        print_r($userRow);
+        return $userRow["id"];
     }
 }
 
