@@ -1,3 +1,6 @@
+
+/* Angel Vergara */
+
 #Profile {
     background-image: linear-gradient(to right, #eeae51, #fad9a9);
     border-style: ridge;
@@ -20,6 +23,10 @@ html, body, #Main {
     background-color: #ebebeb;
     margin: 0;
     height: 100%;
+}
+
+.button {
+    border-radius: 25px;
 }
 
 .tile {
