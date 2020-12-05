@@ -32,20 +32,20 @@ $preferred_time = $row['preferred_time'];
 
 <center>
     <H2>Edit your profile</H2>
-    
-    Enter your information to create your account!
+
+    Enter your information to edit your account!
 
     <FORM name="fmEditProfile" method="POST" action="editProfile.php">
-        <b>What is your name? First and last!<br><input type="text" value="<?php print"$name"; ?>" name="name" placeholder="First and last name" required>
+        <b>What is your name? First and last!<br><input type="text" value="<?php print "$name"; ?>" name="name" placeholder="First and last name" required>
             </br>
 
             <br>
-            Enter your birthyear: <br><input type="year" value="<?php print"$birthyear"; ?>" name="birthyear" placeholder="Format: yyyy" required>
+            Enter your birthyear: <br><input type="year" value="<?php print "$birthyear"; ?>" name="birthyear" placeholder="Format: yyyy" required>
             </br>
 
             <br>
             Choose your sex: <br>
-            <select name="sex" value="<?php print"$sex"; ?>"placeholder="choose your sex" required>
+            <select name="sex" value="<?php print "$sex"; ?>" placeholder="choose your sex" required>
                 <option value=""></option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -54,7 +54,7 @@ $preferred_time = $row['preferred_time'];
             </br>
 
             <br>
-            What sport do you want to play?<br><input type="text" value="<?php print"$sports"; ?>" name="sports" placeholder="Preferred Sport" required>
+            What sport do you want to play?<br><input type="text" value="<?php print "$sports"; ?>" name="sports" placeholder="Preferred Sport" required>
             </br>
 
             <br>
