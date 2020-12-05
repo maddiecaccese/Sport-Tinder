@@ -1,9 +1,9 @@
 <!-- Author: Maddie Caccese !-->
 <?php
-	session_start();
 	include_once("db_connect.php");
-	//test code used before session variable was implemented in login
-	//$_SESSION['userId'] = 2;
+	session_start();
+	//test code used before session varaible was implemented in login
+	// $_SESSION['userId'] = 2;
 	$userId = $_SESSION['userId'];
 ?>
 <!DOCTYPE html>

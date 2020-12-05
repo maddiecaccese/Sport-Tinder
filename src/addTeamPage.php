@@ -18,7 +18,7 @@
 	<br/>
 	<br/>
 	<!-- button to take you to playerList.php to chose players --!>
-	<input type="button" style="background-color:black; color:white;" onclick="window.open('http://www.cs.gettysburg.edu/~caccma03/cs360/project/playerList.php')" value="Add Team Member" />
+	<input type="button" style="background-color:black; color:white;" onclick="window.open('./playerList.php')" value="Add Team Member" />
 	<br/>
 	<br/>
         Sport: <input type="text" name="sport" placeholder="sport" />
