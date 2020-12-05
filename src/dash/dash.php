@@ -8,9 +8,10 @@ include_once("profile.php");
 include_once("athletes.php");
 include_once("filter.php");
 //print($_SESSION['userId'] . "\n");
+
+//getTeam
 //Angel Vergara
 //Checks the if the user is a team captain and if they shuld see the captains dashboard
-
 function getTeam($db, $id) {
     $q1 = "SELECT * FROM team WHERE captain_id=$id";
     
@@ -120,7 +121,7 @@ document.getElementById("TeamList").onclick = function () {
     };
     
     document.getElementById("edit").onclick = function () {
-        location.href = "../editProfile.html";
+        location.href = "../editProfilePage.php";
     };
     
    //add editProfile 

@@ -1,5 +1,8 @@
 <?php
 
+    //getAthletes
+    //gets a List of team/Players
+    //Angel Vergara and Alex Nguyen
     function getAthletes($db, $pid, $type){
  
         if($type == 1){
