@@ -4,7 +4,7 @@ Link to Landing Page: http://cs.gettysburg.edu/~vergan01/Sport-Tinder/src/index.
 Alex: Created the landing page (index_.php). Created the accept/ decline/ request functionality (card.php, accept.php, request.php, utils.php). 
 Created messaging functionality (message.php, utils.php). Created login, signup functionalities (login.php, signup.php, utils.php).
 
-Angel: Created a dashboard that pulls available data from the database with all the associated files.
+Angel: Created a dashboard that pulls available data from the database with all the associated files. Added Search functionality. All of the associated files are those in the dash folder.
 
 Juan: Created a  page for users to edit their existing profiles, editProfilePage.php and editProfile.php and pushes the results of entered text into the
 database as a row of the table player. Created front end of login and most of backend (Alex assisted in incorporating the session variable here). The files are login.html & login.php

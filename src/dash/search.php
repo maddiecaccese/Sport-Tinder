@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <HTML>
 <HEAD>
-<!--A modification of the signup page for advanced search purposes-->
+<!--A modification of the signup page for advanced search purposes. 
+The original page by Alex Nguyen and Juan Eckert. Modifications by Angel Vergara-->
 	<TITLE>Search</TITLE>
 </HEAD>
 
