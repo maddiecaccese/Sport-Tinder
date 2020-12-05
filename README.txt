@@ -3,7 +3,7 @@ Link to Github: https://github.com/rxng8/Sport-Tinder
 Alex: Created the landing page (index_.php). Created the accept/ decline/ request functionality (card.php, accept.php, request.php, utils.php). 
 Created messaging functionality (message.php, utils.php). Created login, signup functionalities (login.php, signup.php, utils.php).
 
-Angel: Created a dashboard that pulls available data from the database with all the associated files.
+Angel: Created a dashboard that pulls available data from the database with all the associated files. It also links to several other functionalities and displays search results. Created a searching backend and frontend, that can search on as many things as wanted. 
 
 Juan: Created a user creation page, createProfile.html and createProfile.php and pushes the results of entered text into the database as a row of the table player.
 
