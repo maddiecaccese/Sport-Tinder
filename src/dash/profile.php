@@ -32,9 +32,11 @@
     }
     else{
     
-        $q1 = "SELECT *, YEAR(CURDATE()) - median_birthyear AS age FROM player WHERE tid='$pid'";
+        $q1 = "SELECT *, YEAR(CURDATE()) - birthyear AS age FROM player WHERE tid='$pid'";
+        $r1 = $db->query($q1);
+         
         if($r1 == FALSE){
-            print "<H1>DATABASE ERROR</H1>";
+            print "<H1>DATABASE ERROR2</H1>";
         }
         else{
             $row = $r1->fetch();

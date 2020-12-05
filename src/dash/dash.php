@@ -56,11 +56,11 @@ function getTeam($db, $id) {
             <?php getMessages($db, $_SESSION['userId'], getTeam($db, $_SESSION['userId']))?>
             </div>
 
-            <a href=dash.php?team=false><div id='Switch' class='button'>
+            <a href='dash.php?team=false'><div id='Switch' class='button'>
             Switch to Player
             </div></a>
             
-            <a href=dash.php?team=true><div id='Switch2' class='button'>
+            <a href='dash.php?team=true'><div id='Switch2' class='button'>
             Switch to Captain
             </div></a>
             
