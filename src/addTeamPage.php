@@ -1,4 +1,4 @@
-<!-- Author: Maddie Caccese --!>
+<!-- Author: Maddie Caccese -->
 <?php   
         include_once("db_connect.php");
 ?>
@@ -9,7 +9,7 @@
 <BODY style="text-align:center;background-color:#A8EBED;">
 <H2 style="text-align:center;">Add a New Team</H2>
 
-<!-- form for user to make team --!>
+<!-- form for user to make team -->
 <FORM name="fmAddTeam" method="POST" action="addTeam.php">
 	<div style="text-align:center;background-color:lightgray;border-style:dashed;border-color:black;">
 	<br/>
@@ -17,7 +17,7 @@
 	Team Name: <input type="text" name="teamname" placeholder="name of team" />
 	<br/>
 	<br/>
-	<!-- button to take you to playerList.php to chose players --!>
+	<!-- button to take you to playerList.php to chose players -->
 	<input type="button" style="background-color:black; color:white;" onclick="window.open('./playerList.php')" value="Add Team Member" />
 	<br/>
 	<br/>
