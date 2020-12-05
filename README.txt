@@ -1,4 +1,5 @@
 Link to Github: https://github.com/rxng8/Sport-Tinder
+Link to Landing Page: http://cs.gettysburg.edu/~vergan01/Sport-Tinder/src/index.php
 
 Alex: Created the landing page (index_.php). Created the accept/ decline/ request functionality (card.php, accept.php, request.php, utils.php). 
 Created messaging functionality (message.php, utils.php). Created login, signup functionalities (login.php, signup.php, utils.php).
