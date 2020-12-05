@@ -11,3 +11,7 @@ database as a row of the table player. Created front end of login and most of ba
 Maddie: Finished the creating a team functionality, as well as frontend for list of teams. Completed the addTeam.php, addTeamPage.php, playerList.php, and teamList.php files, 
 which includes the addTeam function and other functionalities required to make creating a team work. addTeam.php, addTeamPage.php, and playerList.php are fully functional. 
 teamList.php is just the frontend, as I did not have time to implement the backend functionalitites.
+
+test account:
+username: test188
+pass: test
