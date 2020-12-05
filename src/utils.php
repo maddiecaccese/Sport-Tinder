@@ -273,6 +273,8 @@ function putMessage($db, $sender, $receiver, $message) {
     if ($res) {
         return true;
     }
+    print("Sender ID: ".$sender);
+    print("Receiver ID: ".$receiver);
     print("Error adding messages to the database!");
     return false;
 }

@@ -10,6 +10,7 @@ session_start();
 require_once('db_connect.php');
 require('utils.php');
 $_SESSION['chatReceiverId'] = 5;
+
 // $_SESSION['userId'] = 2;
 ?>
 
@@ -116,9 +117,27 @@ $_SESSION['chatReceiverId'] = 5;
 <body>
 
     <div class="sidenav">
-        <p style = "color: #ffffff">Adam</p>
+        <!-- <p style = "color: #ffffff">Adam</p>
         <br>
-        <p style = "color: #ffffff">John</p>
+        <p style = "color: #ffffff">John</p> -->
+
+        <?php 
+          function printPerson($pid, $name) {
+            print("<a href='./message.php?chatReceiverId=$pid'>$name</a><br>");
+          }
+        
+          $res = getAllPlayer($db, $_SESSION['userId']);
+          if (!$res) {
+            print("NO resources");
+          }
+          while($row = $res->fetch()) {
+            printPerson($row['pid'], $row['name']);
+          }
+        
+        ?>
+
+
+
       </div>
 
       <div class="main">
@@ -126,13 +145,14 @@ $_SESSION['chatReceiverId'] = 5;
         <?php 
         
         function printMessage($senderId, $receiverId, $time, $message) {
-            if ($senderId == $_SESSION['userId'] && $receiverId == $_SESSION['chatReceiverId']) {
+            // if ($senderId == $_SESSION['userId'] && $receiverId == $_SESSION['chatReceiverId']) {
+              if ($senderId == $_SESSION['userId'] && $receiverId == $_GET['chatReceiverId']) {
                 print("<div class='container darker'>
                             <img src='./assets/img/ava.jpg' alt='Avatar' class='right' style='float: right;margin-left: 20px;margin-right:0;'>
                             <p>$message</p>
                             <span class='time-left'>$time</span>
                         </div>");
-            } else if ($receiverId == $_SESSION['userId'] && $senderId == $_SESSION['chatReceiverId']) {
+            } else if ($receiverId == $_SESSION['userId'] && $senderId == $_GET['chatReceiverId']) {
                 print("<div class='container'>
                             <img src='./assets/img/ava2.jpg' alt='Avatar'>
                             <p>$message</p>
@@ -144,7 +164,8 @@ $_SESSION['chatReceiverId'] = 5;
         // Checking for a POST request 
         if ($_SERVER["REQUEST_METHOD"] == "POST") { 
             $senderId = $_SESSION['userId']; 
-            $receiverId = $_SESSION['chatReceiverId']; 
+            // $receiverId = $_SESSION['chatReceiverId']; 
+            $receiverId = $_GET['chatReceiverId'];
             $message = $_POST['message'];
             if ($message !== '') {
                 $res = putMessage($db, $senderId, $receiverId, $message);
@@ -152,47 +173,29 @@ $_SESSION['chatReceiverId'] = 5;
             // print("message.php");
         } 
 
-        $res = getMessages($db, $_SESSION['userId'], $_SESSION['chatReceiverId']);
-        
-        if($res) {
-            while($row = $res->fetch()) {
-                $time = $row['time'];
-                $message = $row['message'];
-                printMessage($row['pid1'], $row['pid2'], $time, $message);
-            }
+        // $res = getMessages($db, $_SESSION['userId'], $_SESSION['chatReceiverId']);
+        if ($_GET['chatReceiverId']) {
+          $res = getMessages($db, $_SESSION['userId'], $_GET['chatReceiverId']);
+          if($res) {
+              while($row = $res->fetch()) {
+                  $time = $row['time'];
+                  $message = $row['message'];
+                  printMessage($row['pid1'], $row['pid2'], $time, $message);
+              }
+          }
         }
-        
         ?>
-        <!-- <div class="container">
-            <img src="/w3images/bandmember.jpg" alt="Avatar">
-            <p>Hello. How are you today?</p>
-            <span class="time-right">11:00</span>
-          </div>
-          
-          <div class="container darker">
-            <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
-            <p>Hey! I'm fine. Thanks for asking!</p>
-            <span class="time-left">11:01</span>
-          </div>
-          
-          <div class="container">
-            <img src="/w3images/bandmember.jpg" alt="Avatar">
-            <p>Sweet! So, what do you wanna do today?</p>
-            <span class="time-right">11:02</span>
-          </div>
-          
-          <div class="container darker">
-            <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
-            <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-            <span class="time-left">11:05</span>
-          </div> -->
+        <!-- Print the input box -->
+        <?php 
+        $rid = $_GET['chatReceiverId'];
+        print("<form action='message.php?chatReceiverId=$rid' method='POST'>
+                  <input id='btn-input' type='text' name='message' class='form-control input-sm' placeholder='Type your message here...' />
+                  <span class='input-group-btn'>
+                      <button class='btn btn-warning btn-sm' id='btn-chat' type='submit' name='submit'>Send</button>
+                  </span>
+              </form>");
+        ?>
         
-        <form action="message.php" method='POST'>
-            <input id="btn-input" type="text" name='message' class="form-control input-sm" placeholder="Type your message here..." />
-            <span class="input-group-btn">
-                <button class="btn btn-warning btn-sm" id="btn-chat" type='submit' name="submit">Send</button>
-            </span>
-        </form>
     </div>
     
 
