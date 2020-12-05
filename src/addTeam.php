@@ -1,4 +1,4 @@
-<!-- Author: Maddie Caccese !-->
+<!-- Author: Maddie Caccese -->
 <?php   
         include_once("db_connect.php");
 	session_start();
