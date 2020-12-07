@@ -1,24 +1,22 @@
 # Sport Tinder Application
 
-This is the documentation! - To be edited.
+## Authors \(Sorted by last name\): 
+* Madison E. Caccese - Gettysburg College class of 2022
+* Juan J. Eckert - Gettysburg College class of 2022
+* Alex Nguyen - Gettysburg College class of 2022
+* Angel G. Vergara - Gettysburg College class of 2022
 
-# Technology:
+## Technology:
 
 - PHP
 - MySQL
 - Apache
 
-# Authors \(Sorted by last name\): 
-* Madison E. Caccese
-* Juan J. Eckert
-* Alex Nguyen
-* Angel G. Vergara
-
-# Deployment:
+## Deployment:
 * Link to Github: https://github.com/rxng8/Sport-Tinder
 * Link to Landing Page: http://cs.gettysburg.edu/~vergan01/Sport-Tinder/src/index.php
 
-# Workload:
+## Workload:
 * Alex: Created the landing page (index_.php). Created the accept/ decline/ request functionality (card.php, accept.php, request.php, utils.php). 
 Created messaging functionality (message.php, utils.php). Created login, signup functionalities (login.php, signup.php, utils.php).
 
@@ -31,7 +29,7 @@ database as a row of the table player. Created front end of login and most of ba
 which includes the addTeam function and other functionalities required to make creating a team work. addTeam.php, addTeamPage.php, and playerList.php are fully functional. 
 teamList.php is just the frontend, as I did not have time to implement the backend functionalitites.
 
-# Test accounts:
+## Test accounts:
 * Account 1:
   * username: test188
   * pass: test
